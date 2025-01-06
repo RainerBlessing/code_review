@@ -18,5 +18,15 @@ pkgs.stdenv.mkDerivation {
     license = pkgs.lib.licenses.mit;
     maintainers = [ pkgs.lib.maintainers.yourname ];
   };
+
+shellHook = ''
+    if [ -f ~/.profile ]; then
+      source ~/.profile
+    fi
+
+    cargo build
+
+    echo "Virtuelle Umgebung und Abhängigkeiten wurden eingerichtet!"
+  '';
 }
 
